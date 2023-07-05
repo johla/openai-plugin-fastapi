@@ -7,6 +7,13 @@
       "price": 149.99
     },
     {
+      "name": "Contoso Goretext Hiking Boots",
+      "description": "Durable hiking boots in Goretext, waterproof and insulated for all-day comfort on the trails",
+      "category": "Hiking",
+      "size": "10",
+      "price": 229.99
+    },
+    {
       "name": "Contoso Hiking Boots",
       "description": "Durable hiking boots for all-day comfort on the trails",
       "category": "Hiking",
