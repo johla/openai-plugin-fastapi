@@ -8,9 +8,6 @@ app = FastAPI()
 app.include_router(wellknown)
 app.add_middleware(CORSMiddleware, allow_origins=["https://chat.openai.com"])
 
-#with open("./data/products.json", "r") as f:
-#    products = json.load(f)
-
 
 @app.get("/role", summary="Get a role to play", operation_id="getRole")
 async def get_role():
