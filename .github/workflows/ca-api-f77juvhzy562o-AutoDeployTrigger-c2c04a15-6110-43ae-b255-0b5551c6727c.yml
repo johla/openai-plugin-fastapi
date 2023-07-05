@@ -1,0 +1,42 @@
+name: Trigger auto deployment for ca-api-f77juvhzy562o
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/ca-api-f77juvhzy562o-AutoDeployTrigger-c2c04a15-6110-43ae-b255-0b5551c6727c.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CAAPIF77JUVHZY562O_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: crf77juvhzy562o.azurecr.io
+          registryUsername: ${{ secrets.CAAPIF77JUVHZY562O_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.CAAPIF77JUVHZY562O_REGISTRY_PASSWORD }}
+          containerAppName: ca-api-f77juvhzy562o
+          resourceGroup: rg-lajohans-gptplugin
+          imageToBuild: crf77juvhzy562o.azurecr.io/openai-plugin-fastapi/api-lajohans-gptplugin:${{ github.sha }}
+          dockerfilePath: Dockerfile
+
+     
+
