@@ -2,25 +2,19 @@ from fastapi import FastAPI
 from routers.wellknown import wellknown
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import requests
 
 app = FastAPI()
 app.include_router(wellknown)
 app.add_middleware(CORSMiddleware, allow_origins=["https://chat.openai.com"])
 
-with open("./data/products.json", "r") as f:
-    products = json.load(f)
+#with open("./data/products.json", "r") as f:
+#    products = json.load(f)
 
 
-@app.get("/products", summary="Get a list of products", operation_id="getProducts")
-async def get_products(query: str = None):
+@app.get("/role", summary="Get a role to play", operation_id="getRole")
+async def get_role():
     """
-    Returns a list of products, optionally filtered by providing a query parameter.
+    Returns a role to play
     """
-    if query:
-        keywords = query.lower().split()
-        return [
-            product
-            for product in products
-            if all(keyword in str(product.values()).lower() for keyword in keywords)
-        ]
-    return products
+    return "You are an elite linguistic professor who is trying to teach a new language to a group of students."
