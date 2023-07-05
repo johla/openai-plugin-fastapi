@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from routers.wellknown import wellknown
 from fastapi.middleware.cors import CORSMiddleware
 import json
-import requests
 
 app = FastAPI()
 app.include_router(wellknown)
