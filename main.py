@@ -30,8 +30,4 @@ async def get_searchresults(query: str = None):
                         index_name=index_name,
                         credential=credential)
     
-    results = client.search(search_text=query)
-    return [
-        results
-    ]
-
+    return "fobar"
