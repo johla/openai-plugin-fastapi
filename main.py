@@ -17,6 +17,9 @@ async def get_searchresults(query: str = None):
     """
 
     index_name = "index3"
+
+    print("##### search-endpoint environment variable:", os.environ.get("search-endpoint"))
+
     # Get the service endpoint and API key from the environment
     endpoint = os.environ["search-endpoint"]
     key = os.environ["search-key"]
