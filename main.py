@@ -18,17 +18,17 @@ async def get_searchresults(query: str = None):
 
     index_name = "index3"
 
-    print("##### search-endpoint environment variable:", os.environ.get("search-endpoint"))
+    print("##### Environment variable:", os.environ.get("SEARCH_KEY"))
 
     # Get the service endpoint and API key from the environment
-    endpoint = os.environ["search-endpoint"]
-    key = os.environ["search-key"]
+    endpoint = os.environ.get("SEARCH_ENDPOINT")
+    key = os.environ.get("SEARCH_KEY")
 
     # Create a client
     credential = AzureKeyCredential(key)
     client = SearchClient(endpoint=endpoint,
                         index_name=index_name,
-                        credential=credential)
+                        credential=key)
     
     results = client.search(search_text=query)
     return [
