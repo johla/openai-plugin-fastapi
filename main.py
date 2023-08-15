@@ -10,10 +10,10 @@ app.include_router(wellknown)
 app.add_middleware(CORSMiddleware, allow_origins=["https://chat.openai.com"])
 
 
-@app.get("/info", summary="Get information from Azure cognitive search by extracting a query from the ", operation_id="getInfo")
-async def get_info(query: str = None):
+@app.get("/searchresults", summary="Get search results from Azure Cognitive Search by extracting a query from the user input.", operation_id="getInfo")
+async def get_searchresults(query: str = None):
     """
-    Returns information based on a query parameter.
+    Returns information from ACS based on a query parameter.
     """
 
     index_name = "index3"
