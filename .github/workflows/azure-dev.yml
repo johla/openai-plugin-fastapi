@@ -21,8 +21,6 @@ jobs:
         AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
         AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
         AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
-        search-key: ${{ secrets.SEARCHKEY }}
-        search-endpoint: ${{ secrets.SEARCHENDPOINT }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
