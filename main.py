@@ -28,7 +28,7 @@ async def get_searchresults(query: str = None):
     credential = AzureKeyCredential(key)
     client = SearchClient(endpoint=endpoint,
                         index_name=index_name,
-                        credential=key)
+                        credential=credential)
     
     results = client.search(search_text=query)
     return [
