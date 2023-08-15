@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_model": "RoleplayPlugin",
-  "name_for_human": "Roleplay Plugin",
-  "description_for_model": "Plugin for define what role you are to ac as. Use it whenever a user writes the control word 'Role:'.",
-  "description_for_human": "Set the role for the AI to play.",
+  "name_for_model": "LiveSearchPlugin",
+  "name_for_human": "Azure CognitiveSearch Plugin",
+  "description_for_model": "Plugin to search an Azure cognitive search index. Use it whenever a user ask to search our private index. Extract the query from the user input and call the Azure cognitive search API.",
+  "description_for_human": "Lets you search an index in Azure cognitive search!",
   "auth": {
     "type": "none"
   },
