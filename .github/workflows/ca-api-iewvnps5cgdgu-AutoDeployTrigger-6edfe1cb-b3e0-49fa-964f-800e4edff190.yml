@@ -1,0 +1,42 @@
+name: Trigger auto deployment for ca-api-iewvnps5cgdgu
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/ca-api-iewvnps5cgdgu-AutoDeployTrigger-6edfe1cb-b3e0-49fa-964f-800e4edff190.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CAAPIIEWVNPS5CGDGU_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: criewvnps5cgdgu.azurecr.io
+          registryUsername: ${{ secrets.CAAPIIEWVNPS5CGDGU_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.CAAPIIEWVNPS5CGDGU_REGISTRY_PASSWORD }}
+          containerAppName: ca-api-iewvnps5cgdgu
+          resourceGroup: rg-llm
+          imageToBuild: criewvnps5cgdgu.azurecr.io/ca-api-iewvnps5cgdgu:${{ github.sha }}
+          dockerfilePath: Dockerfile
+
+     
+
