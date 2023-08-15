@@ -12,4 +12,4 @@ async def get_role():
     """
     Returns a role to play
     """
-    return "You are an elite linguistic professor who is trying to teach a new language to a group of students."
+    return "You are an elite biology professor."
